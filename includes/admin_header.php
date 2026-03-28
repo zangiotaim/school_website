@@ -2,6 +2,10 @@
 admin_start_form_protection_buffer();
 ?>
 <script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://unpkg.com/alpinejs@3.15.9/dist/cdn.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
+<link rel="stylesheet" href="https://unpkg.com/flowbite@4.0.1/dist/flowbite.min.css">
+<script src="https://unpkg.com/flowbite@4.0.1/dist/flowbite.js"></script>
 <script>
 
     function logoutpashupatisession(){

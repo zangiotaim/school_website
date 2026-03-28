@@ -1,12 +1,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.15.9/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@4.0.1/dist/flowbite.min.css">
+    <script src="https://unpkg.com/flowbite@4.0.1/dist/flowbite.js"></script>
     <script>
 function homepage() {
     window.location.replace('index.php');
 }
     </script>
-    <!-- unpkg -->
-    <script src="https://unpkg.com/@barba/core"></script>
-
     <!-- jsdelivr -->
     <script src="https://cdn.jsdelivr.net/npm/@barba/core"></script>
     <style>

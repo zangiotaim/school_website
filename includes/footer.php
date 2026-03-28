@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <footer class="text-slate-300 bg-[#042c3e] body-font shadow-inner">
     <div class="mx-auto w-full px-4 py-7 sm:px-6 lg:px-8">
         <div class="flex flex-wrap flex-col md:flex-row md:flex-nowrap md:items-center lg:items-start">

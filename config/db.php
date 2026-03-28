@@ -2,7 +2,7 @@
 
 date_default_timezone_set('Asia/Tashkent');
 
-$server = '127.0.01';
+$server = '127.0.0.1';
 $username = 'db_name';
 $password = 'db_password';
 $database = 'db_name';

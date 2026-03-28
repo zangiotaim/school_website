@@ -167,12 +167,12 @@ $heroImages = array_slice($carousel_images ?? [], 0, 3);
         if ((int) $flash_notice['is_enabled'] === 1) {
             echo '
             <div id="info-popup" tabindex="-1" class="fadeIn hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
-                <div class="relative p-4 w-full max-w-lg h-full md:h-auto">
-                    <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 md:p-8">
+                <div class="relative p-4 w-full max-w-xl h-full md:h-auto">
+                    <div class="relative p-5 bg-white rounded-xl shadow dark:bg-gray-800 md:p-9">
                         <div class="mb-4 text-sm font-light text-gray-500 dark:text-gray-400">
-                            <h3 class="mb-3 text-2xl font-bold text-gray-900 dark:text-white">' . $flash_notice['title'] . '</h3>
+                            <h3 class="mb-3 text-[2.15rem] font-bold text-gray-900 dark:text-white">' . $flash_notice['title'] . '</h3>
                             <img class="object-cover w-full rounded-lg" src="' . $flash_notice['image_url'] . '" alt="">
-                            <p class="mt-3 font-bold">' . $flash_notice['message'] . '</p>
+                            <p class="mt-4 text-[1.05rem] font-bold leading-7">' . $flash_notice['message'] . '</p>
                         </div>
                         <div class="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
                             <a href="about.php" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">See About School</a>

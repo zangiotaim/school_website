@@ -14,6 +14,7 @@ SET time_zone = "+00:00";
 SET FOREIGN_KEY_CHECKS = 0;
 
 DROP TABLE IF EXISTS `school_notice`;
+DROP TABLE IF EXISTS `carousel_images`;
 DROP TABLE IF EXISTS `gallery_images`;
 DROP TABLE IF EXISTS `web_content`;
 DROP TABLE IF EXISTS `staffs`;
@@ -92,6 +93,30 @@ CREATE TABLE `contactfeedback` (
   `email` varchar(30) NOT NULL,
   `message` varchar(999) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `carousel_images`
+--
+
+CREATE TABLE `carousel_images` (
+  `id` int NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `alt_text` varchar(255) DEFAULT NULL,
+  `sort_order` int NOT NULL DEFAULT '0',
+  `is_enabled` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `carousel_images`
+--
+
+INSERT INTO `carousel_images` (`id`, `image_url`, `alt_text`, `sort_order`, `is_enabled`) VALUES
+(1, 'assets/images/school_images/zangiotaim_front.webp', 'Zangiota Tuman school front', 1, 1),
+(2, 'assets/images/school_images/zangiotaim_001.jpg', 'School building', 2, 1),
+(3, 'assets/images/school_images/fullschool.jpg', 'School building', 3, 1),
+(4, 'assets/images/school_images/mainschool.jpg', 'Main school building', 4, 1);
 
 -- --------------------------------------------------------
 

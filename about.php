@@ -1,11 +1,10 @@
 <?php
 include 'config/db.php';
+include_once 'includes/content_helpers.php';
+include_once 'includes/functions.php';
 
-try {
-    $row = db_select_one($connection, "SELECT * FROM web_content WHERE id = 2");
-} catch (Exception $e) {
-    echo "Error: " . $e->getMessage();
-}
+$sections = get_web_content_sections($connection);
+$row = $sections[2] ?? [];
 ?>
 
 
@@ -16,7 +15,6 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="css/utilities.css">
     <link rel="icon" type="image/x-icon" href="assets/images/logo2.png">
 
@@ -35,7 +33,7 @@ try {
                         <br class="hidden lg:inline-block">
                     </h1>
                     <p class="text-justify text-sm md:text-base mb-8 leading-relaxed">
-                        <?php echo $row['one'];?></p>
+                        <?php echo format_db_text($row['one'] ?? ''); ?></p>
                     <div class="flex justify-center">
                         <button onclick="contactbtn()" class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Contact Us</button>
                         <button onclick="joinbtn()" class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Join Us</button>
@@ -68,7 +66,7 @@ try {
                         </div>
                         <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
                             <p class="text-justify text-sm md:text-base leading-relaxed text-lg mb-4">
-                            <?php echo $row['two'];?></p>
+                            <?php echo format_db_text($row['two'] ?? ''); ?></p>
                             <a href="staff.php" class="cursor-pointer text-indigo-500 inline-flex items-center">View School Staff and Committee
                                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                                     <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -86,7 +84,7 @@ try {
                 <div class="text-center mb-10">
                     <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-blue-600 mb-4">Rules and regulations</h1>
                     <p class="text-justify text-sm md:text-base text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
-                    <?php echo $row['three'];?></p>
+                    <?php echo format_db_text($row['three'] ?? ''); ?></p>
                 </div>
                 <div class="flex flex-wrap lg:w-4/5 sm:mx-auto sm:mb-2 -mx-2">
                     <div class="p-2 sm:w-1/2 w-full">
@@ -95,7 +93,7 @@ try {
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="text-sm md:text-base title-font font-medium"><?php echo $row['four'];?></span>
+                            <span class="text-sm md:text-base title-font font-medium"><?php echo format_db_text($row['four'] ?? ''); ?></span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -104,7 +102,7 @@ try {
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="text-sm md:text-base title-font font-medium"><?php echo $row['five'];?></span>
+                            <span class="text-sm md:text-base title-font font-medium"><?php echo format_db_text($row['five'] ?? ''); ?></span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -113,7 +111,7 @@ try {
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="text-sm md:text-base title-font font-medium"><?php echo $row['six'];?></span>
+                            <span class="text-sm md:text-base title-font font-medium"><?php echo format_db_text($row['six'] ?? ''); ?></span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -122,7 +120,7 @@ try {
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="text-sm md:text-base title-font font-medium"><?php echo $row['seven'];?></span>
+                            <span class="text-sm md:text-base title-font font-medium"><?php echo format_db_text($row['seven'] ?? ''); ?></span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -131,7 +129,7 @@ try {
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="text-sm md:text-base title-font font-medium"><?php echo $row['eight'];?></span>
+                            <span class="text-sm md:text-base title-font font-medium"><?php echo format_db_text($row['eight'] ?? ''); ?></span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -140,7 +138,7 @@ try {
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="text-sm md:text-base title-font font-medium"><?php echo $row['nine'];?></span>
+                            <span class="text-sm md:text-base title-font font-medium"><?php echo format_db_text($row['nine'] ?? ''); ?></span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -149,7 +147,7 @@ try {
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="text-sm md:text-base title-font font-medium"><?php echo $row['ten'];?></span>
+                            <span class="text-sm md:text-base title-font font-medium"><?php echo format_db_text($row['ten'] ?? ''); ?></span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -158,7 +156,7 @@ try {
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="text-sm md:text-base title-font font-medium"><?php echo $row['eleven'];?></span>
+                            <span class="text-sm md:text-base title-font font-medium"><?php echo format_db_text($row['eleven'] ?? ''); ?></span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -167,7 +165,7 @@ try {
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="text-sm md:text-base title-font font-medium"><?php echo $row['twelve'];?></span>
+                            <span class="text-sm md:text-base title-font font-medium"><?php echo format_db_text($row['twelve'] ?? ''); ?></span>
                         </div>
                     </div>
                     <div class="p-2 sm:w-1/2 w-full">
@@ -176,7 +174,7 @@ try {
                                 <path d="M22 11.08V12a10 10 0 11-5.93-9.14"></path>
                                 <path d="M22 4L12 14.01l-3-3"></path>
                             </svg>
-                            <span class="text-sm md:text-base title-font font-medium"><?php echo $row['thirteen'];?></span>
+                            <span class="text-sm md:text-base title-font font-medium"><?php echo format_db_text($row['thirteen'] ?? ''); ?></span>
                         </div>
                     </div>
                 </div>
@@ -189,7 +187,7 @@ try {
                 <div class="text-center mb-10">
                     <h1 class="sm:text-3xl text-2xl font-medium text-center title-font text-blue-600 mb-4">Our Courses</h1>
                     <p class="text-justify text-sm md:text-base text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto">
-                    <?php echo $row['fourteen'];?></p>
+                    <?php echo format_db_text($row['fourteen'] ?? ''); ?></p>
                 </div>
                 <div class="flex flex-wrap -mx-4 -mb-10 text-center">
                     <div class="sm:w-1/2 mb-10 px-4">
@@ -198,7 +196,7 @@ try {
                         </div>
                         <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Aniq fanlar (Exact Sciences track)</h2>
                         <p class="text-justify text-sm md:text-base leading-relaxed text-base">
-                        <?php echo $row['fifteen'];?></p>
+                        <?php echo format_db_text($row['fifteen'] ?? ''); ?></p>
                         <button onclick="joinbtn()" class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Apply to STEM Track</button>
                     </div>
                     <div class="sm:w-1/2 mb-10 px-4">
@@ -207,7 +205,7 @@ try {
                         </div>
                         <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Tabiiy fanlar (Natural Sciences track)</h2>
                         <p class="text-justify text-sm md:text-base leading-relaxed text-base">
-                        <?php echo $row['sixteen'];?></p>
+                        <?php echo format_db_text($row['sixteen'] ?? ''); ?></p>
                         <button onclick="joinbtn()" class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Apply to Science Track</button>
                     </div>
                 </div>
@@ -224,7 +222,7 @@ try {
                         <div class="h-1 w-20 bg-indigo-500 rounded"></div>
                     </div>
                     <p class="text-justify text-sm md:text-base lg:w-1/2 w-full leading-relaxed text-gray-500">
-                    <?php echo $row['seventeen'];?></p>
+                    <?php echo format_db_text($row['seventeen'] ?? ''); ?></p>
                 </div>
                 <div class="flex flex-wrap -m-4">
                     <div class="xl:w-1/4 md:w-1/2 p-4">
@@ -232,7 +230,7 @@ try {
                             <img class="h-40 rounded w-full object-cover object-center mb-6" src="assets/images/facilities/physics_lab.jpg" alt="content">
                             <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font"></h3>
                             <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Physics Lab</h2>
-                            <p class="text-sm md:text-base leading-relaxed text-base"><?php echo $row['eighteen'];?></p>
+                            <p class="text-sm md:text-base leading-relaxed text-base"><?php echo format_db_text($row['eighteen'] ?? ''); ?></p>
                         </div>
                     </div>
                     <div class="xl:w-1/4 md:w-1/2 p-4">
@@ -240,7 +238,7 @@ try {
                             <img class="h-40 rounded w-full object-cover object-center mb-6" src="assets/images/facilities/computer_lab.jpg" alt="content">
                             <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font"></h3>
                             <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Computer Lab</h2>
-                            <p class="text-sm md:text-base leading-relaxed text-base"><?php echo $row['ninteen'];?></p>
+                            <p class="text-sm md:text-base leading-relaxed text-base"><?php echo format_db_text($row['ninteen'] ?? ''); ?></p>
                         </div>
                     </div>
                     <div class="xl:w-1/4 md:w-1/2 p-4">
@@ -248,7 +246,7 @@ try {
                             <img class="h-40 rounded w-full object-cover object-center mb-6" src="assets/images/facilities/network_lab.jpg" alt="content">
                             <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font"></h3>
                             <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Electronics and Network Lab</h2>
-                            <p class="text-sm md:text-base leading-relaxed text-base"><?php echo $row['twenty'];?></p>
+                            <p class="text-sm md:text-base leading-relaxed text-base"><?php echo format_db_text($row['twenty'] ?? ''); ?></p>
                         </div>
                     </div>
                     <div class="xl:w-1/4 md:w-1/2 p-4">
@@ -256,7 +254,7 @@ try {
                             <img class="h-40 rounded w-full object-cover object-center mb-6" src="assets/images/facilities/library_lab.jpg" alt="content">
                             <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font"></h3>
                             <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Library</h2>
-                            <p class="text-sm md:text-base leading-relaxed text-base"><?php echo $row['twentyone'];?></p>
+                            <p class="text-sm md:text-base leading-relaxed text-base"><?php echo format_db_text($row['twentyone'] ?? ''); ?></p>
                         </div>
                     </div>
                 </div>
@@ -274,7 +272,7 @@ try {
     }
 
     function contactbtn() {
-        window.location.href = "contact_us.php";
+        window.location.href = "contact.php";
     }
     console.clear();
 </script>

@@ -18,12 +18,10 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join Us</title>
-    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/images/logo2.png">
     <script>
         function conactUs() {
-            window.location.href = "contact_us.php";
+            window.location.href = "contact.php";
         }
 
         function showContent() {
@@ -244,7 +242,6 @@ try {
 
 
     </main>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
     <?php include ("includes/footer.php") ?>
 </body>
 

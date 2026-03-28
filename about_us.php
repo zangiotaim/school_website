@@ -57,14 +57,13 @@ try {
                         <div class="sm:w-1/3 text-center sm:pr-8 sm:py-8">
                             <div class="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
 
-                                <img src="assets/images/staff/thir_kumar_dahal.jpg" alt="" srcset="">
+                                <img src="assets/images/staff/default_teacher.jpg" alt="" srcset="">
 
                             </div>
                             <div class="flex flex-col items-center text-center justify-center">
                                 <h2 class="font-medium title-font mt-4 text-gray-900 text-lg">Principal: Y. Mirzakhmedova</h2>
                                 <div class="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
                                 <p class="text-base">Message From Principal</p>
-                                <p class="text-base">Vice Principal: Sh. Choriyev</p>
                             </div>
                         </div>
                         <div class="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
@@ -197,19 +196,19 @@ try {
                         <div class="rounded-lg h-64 overflow-hidden">
                             <img alt="content" class="object-cover object-center h-full w-full" src="assets/images/courses/computerengineering.jpg">
                         </div>
-                        <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Computer Engineering (9-12)</h2>
+                        <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Aniq fanlar (Exact Sciences track)</h2>
                         <p class="text-justify text-sm md:text-base leading-relaxed text-base">
                         <?php echo $row['fifteen'];?></p>
-                        <button onclick="joinbtn()" class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Join Computer Engineering</button>
+                        <button onclick="joinbtn()" class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Apply to STEM Track</button>
                     </div>
                     <div class="sm:w-1/2 mb-10 px-4">
                         <div class="rounded-lg h-64 overflow-hidden">
                             <img alt="content" class="object-cover object-center h-full w-full" src="assets/images/courses/computerscience.jpg">
                         </div>
-                        <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Management (+2 Computer Science)</h2>
+                        <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">Tabiiy fanlar (Natural Sciences track)</h2>
                         <p class="text-justify text-sm md:text-base leading-relaxed text-base">
                         <?php echo $row['sixteen'];?></p>
-                        <button onclick="joinbtn()" class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Join Computer Science</button>
+                        <button onclick="joinbtn()" class="flex mx-auto mt-6 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded">Apply to Science Track</button>
                     </div>
                 </div>
             </div>

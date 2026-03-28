@@ -43,7 +43,7 @@ $heroImages = array_slice($carousel_images ?? [], 0, 3);
                         </p>
                         <div class="mt-6 flex flex-wrap gap-3">
                             <a href="join_us.php" class="inline-flex items-center justify-center rounded-full bg-blue-700 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-700/20 transition hover:bg-blue-800">Join Us</a>
-                            <a href="about_us.php" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-500 hover:text-blue-700">Learn More</a>
+                            <a href="about.php" class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-500 hover:text-blue-700">Learn More</a>
                         </div>
                     </div>
                 </div>
@@ -155,7 +155,7 @@ $heroImages = array_slice($carousel_images ?? [], 0, 3);
                     </p>
                     <div class="mt-6 flex flex-wrap gap-3">
                         <a href="join_us.php" class="inline-flex items-center rounded-full bg-blue-700 px-5 py-3 text-sm font-semibold text-white transition hover:bg-blue-800">Join Computer Engineering</a>
-                        <a href="about_us.php#courses" class="inline-flex items-center rounded-full border border-blue-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-700">Explore Courses</a>
+                        <a href="about.php#courses" class="inline-flex items-center rounded-full border border-blue-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-blue-300 hover:text-blue-700">Explore Courses</a>
                     </div>
                 </div>
             </div>
@@ -175,7 +175,7 @@ $heroImages = array_slice($carousel_images ?? [], 0, 3);
                             <p class="mt-3 font-bold">' . $flash_notice['message'] . '</p>
                         </div>
                         <div class="justify-between items-center pt-0 space-y-4 sm:flex sm:space-y-0">
-                            <a href="about_us.php" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">See About School</a>
+                            <a href="about.php" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">See About School</a>
                             <div class="items-center space-y-4 sm:space-x-4 sm:flex sm:space-y-0">
                                 <button id="close-modal" type="button" class="py-2 px-4 w-full text-sm font-medium text-center text-white rounded-lg bg-blue-700 sm:w-auto hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Close</button>
                             </div>

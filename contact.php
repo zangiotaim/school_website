@@ -1,5 +1,6 @@
 <?php
 include 'config/db.php';
+include_once 'includes/functions.php';
 
 try {
     $row = db_select_one($connection, "SELECT * FROM web_content WHERE id = 4");
@@ -10,13 +11,12 @@ try {
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
-    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+    <title>Contact | Zangiota IM</title>
     <link rel="stylesheet" href="css/utilities.css">
     <link rel="icon" type="image/x-icon" href="assets/images/logo2.png">
 
@@ -29,13 +29,13 @@ try {
         <section class="text-gray-600 body-font">
             <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
                 <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                    <img class="object-cover object-center rounded" alt="hero" src="assets/images/school_images/fullschool.jpg">
+                    <img class="object-cover object-center rounded" alt="Zangiota school building" src="assets/images/school_images/fullschool.jpg">
                 </div>
                 <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-                    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-blue-600">Contact Us
+                    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-blue-600">Contact
                         <br class="hidden lg:inline-block">
                     </h1>
-                    <p class="text-sm md:text-base text-justify mb-8 leading-relaxed"><?php echo $row['one']; ?></p>
+                    <p class="text-sm md:text-base text-justify mb-8 leading-relaxed"><?php echo format_db_text($row['one'] ?? ''); ?></p>
                     <div class="flex justify-center">
                         <button class="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onclick="callschool()">Call</button>
                         <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg" onclick="mailschool()">Message</button>
@@ -47,23 +47,23 @@ try {
         <section class="text-gray-600 body-font relative">
             <div class="container px-5 py-24 mx-auto flex sm:flex-nowrap flex-wrap pt-0">
                 <div class="lg:w-2/3 md:w-1/2 bg-gray-300 rounded-lg overflow-hidden sm:mr-10 p-10 flex items-end justify-start relative">
-                    <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1262.327117486613!2d87.93232633194452!3d26.50724862577117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e5a39a0430f281%3A0x82e603b00673e6f1!2sPashupati%20Secondary%20School!5e0!3m2!1sen!2snp!4v1701879064761!5m2!1sen!2snp" style="filter: grayscale(0) contrast(1.2) opacity(0.7);"></iframe>
+                    <iframe width="100%" height="100%" class="absolute inset-0" frameborder="0" title="map" marginheight="0" marginwidth="0" scrolling="no" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d245.41291277649057!2d69.14565372324934!3d41.26928928045024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae89d2d3a40af5%3A0x2183f1b91bbe7624!2sZpiima!5e0!3m2!1sen!2s!4v1774721030441!5m2!1sen!2s" style="filter: grayscale(0) contrast(1.2) opacity(0.7);"></iframe>
                     <div class="pr-2 bg-white relative flex flex-wrap py-6 rounded shadow-md">
                         <div class="lg:w-1/2 px-6">
                             <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">ADDRESS</h2>
-                            <p class="text-sm md:text-base text-justify mt-1 cursor-pointer" onclick="locationmap()"> Bahradashi-3, Jhapa, Nepal</p>
+                            <p class="text-sm md:text-base text-justify mt-1 cursor-pointer" onclick="locationmap()"> Toshkent viloyati Zangiota tumani Tokzor mahallasi TXAY koʻchasi 10- uy</p>
                         </div>
                         <div class="lg:w-1/2 px-6 mt-4 lg:mt-0">
                             <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs">EMAIL</h2>
-                            <a class="text-sm md:text-base text-justify text-indigo-500 leading-relaxed cursor-pointer" onclick="mailschool()"> pashupati.school4012@gmail.com</a>
+                            <a class="text-sm md:text-base text-justify text-indigo-500 leading-relaxed cursor-pointer" onclick="mailschool()"> info@zangiotaim.uz</a>
                             <h2 class="title-font font-semibold text-gray-900 tracking-widest text-xs mt-4">PHONE</h2>
-                            <p class="text-sm md:text-base text-justify leading-relaxed cursor-pointer" onclick="callschool()"> 9844640316</p>
+                            <p class="text-sm md:text-base text-justify leading-relaxed cursor-pointer" onclick="callschool()"> +998 55 520-01-27</p>
                         </div>
                     </div>
                 </div>
                 <div class="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
                     <h2 class="text-gray-900 text-lg mb-1 font-medium title-font">Feedback</h2>
-                    <p class="text-sm md:text-base leading-relaxed mb-5 text-gray-600">Your invaluable feedback for our school is eagerly awaited and appreciated here.</p>
+                    <p class="text-sm md:text-base leading-relaxed mb-5 text-gray-600">Your feedback helps us improve the school experience for students and parents.</p>
                     <form method="post" action="">
                         <div class="relative mb-4 hidesent">
                             <label for="name" class="leading-7 text-sm text-gray-600">Name</label>

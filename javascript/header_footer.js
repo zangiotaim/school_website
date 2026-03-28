@@ -10,7 +10,7 @@ function mailschool(){
 }
 
 function locationmap(){
-    window.location.href = "https://maps.app.goo.gl/seKbXLuVfkg5oViM9";
+    window.location.href = "https://maps.app.goo.gl/UJEbjnEVBK5goFkr5";
 }
 
 function callschool(){  

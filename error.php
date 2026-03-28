@@ -34,11 +34,6 @@
         a:hover {
             text-decoration: underline;
         }
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 20px;
-        }
         #timer {
             font-size: 24px;
             margin-top: 20px;
@@ -58,12 +53,12 @@
 </head>
 <body>
     <div class="container">
-        <h1>404 Error - Page Not Found</h1>
-        <img src="assets/images/defaults/header_logo.png" alt="School Logo">
-        <p>Oops! It seems like you've reached a page that doesn't exist on our school website.</p>
-        <p>No worries! In a few moments, we'll guide you back to familiar ground.</p>
-        <p>While you wait, why not learn more about our school? Click <a href="index.php">here</a> to explore!</p>
-        <p>You will be redirected in <span id="timer">10</span> seconds...</p>
+        <h1>404 - Page Not Found</h1>
+        <p>The page you were looking for is unavailable or may have been moved.</p>
+        <p>Please take a moment to return to the homepage and continue exploring the school website.</p>
+        <p>If you were trying to reach a specific section, the main menu is the quickest place to start.</p>
+        <p>You will be redirected to the homepage in <span id="timer">10</span> seconds.</p>
+        <p><a href="index.php">Go back to the homepage now</a></p>
     </div>
 </body>
 </html>

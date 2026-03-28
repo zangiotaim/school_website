@@ -21,12 +21,12 @@ function homepage() {
             100% { transform: translateX(-50%); }
         }
     </style>
-    <div class="overflow-hidden bg-blue-700 py-2 text-white">
-        <div class="site-notice-track whitespace-nowrap text-sm font-semibold tracking-wide">
-            <span class="px-8 inline-flex items-center gap-2"><span class="rounded-full bg-blue-500/25 px-2.5 py-0.5 text-[11px] font-bold tracking-widest text-blue-100 ring-1 ring-blue-200/40">EN</span><span>Site is currently in test mode. Content is being filled up and updated gradually. Please check back soon for the full experience.</span></span>
-            <span class="px-8 inline-flex items-center gap-2"><span class="rounded-full bg-emerald-500/25 px-2.5 py-0.5 text-[11px] font-bold tracking-widest text-emerald-100 ring-1 ring-emerald-200/40">UZ</span><span>Veb-sayt hozir sinov rejimida ishlamoqda. Kontent bosqichma-bosqich to‘ldirilmoqda va yangilanmoqda. Iltimos, to‘liq imkoniyatlar uchun tez orada qayta tashrif buyuring.</span></span>
-            <span class="px-8 inline-flex items-center gap-2"><span class="rounded-full bg-blue-500/25 px-2.5 py-0.5 text-[11px] font-bold tracking-widest text-blue-100 ring-1 ring-blue-200/40">EN</span><span>Site is currently in test mode. Content is being filled up and updated gradually. Please check back soon for the full experience.</span></span>
-            <span class="px-8 inline-flex items-center gap-2"><span class="rounded-full bg-emerald-500/25 px-2.5 py-0.5 text-[11px] font-bold tracking-widest text-emerald-100 ring-1 ring-emerald-200/40">UZ</span><span>Veb-sayt hozir sinov rejimida ishlamoqda. Kontent bosqichma-bosqich to‘ldirilmoqda va yangilanmoqda. Iltimos, to‘liq imkoniyatlar uchun tez orada qayta tashrif buyuring.</span></span>
+    <div class="overflow-hidden bg-blue-700 py-2.5 text-white">
+        <div class="site-notice-track whitespace-nowrap text-[0.95rem] font-semibold tracking-wide">
+            <span class="px-8 inline-flex items-center gap-2"><span class="rounded-full bg-blue-500/25 px-3 py-0.5 text-[12px] font-bold tracking-widest text-blue-100 ring-1 ring-blue-200/40">EN</span><span>Site is currently in test mode. Content is being filled up and updated gradually. Please check back soon for the full experience.</span></span>
+            <span class="px-8 inline-flex items-center gap-2"><span class="rounded-full bg-emerald-500/25 px-3 py-0.5 text-[12px] font-bold tracking-widest text-emerald-100 ring-1 ring-emerald-200/40">UZ</span><span>Veb-sayt hozir sinov rejimida ishlamoqda. Kontent bosqichma-bosqich to‘ldirilmoqda va yangilanmoqda. Iltimos, to‘liq imkoniyatlar uchun tez orada qayta tashrif buyuring.</span></span>
+            <span class="px-8 inline-flex items-center gap-2"><span class="rounded-full bg-blue-500/25 px-3 py-0.5 text-[12px] font-bold tracking-widest text-blue-100 ring-1 ring-blue-200/40">EN</span><span>Site is currently in test mode. Content is being filled up and updated gradually. Please check back soon for the full experience.</span></span>
+            <span class="px-8 inline-flex items-center gap-2"><span class="rounded-full bg-emerald-500/25 px-3 py-0.5 text-[12px] font-bold tracking-widest text-emerald-100 ring-1 ring-emerald-200/40">UZ</span><span>Veb-sayt hozir sinov rejimida ishlamoqda. Kontent bosqichma-bosqich to‘ldirilmoqda va yangilanmoqda. Iltimos, to‘liq imkoniyatlar uchun tez orada qayta tashrif buyuring.</span></span>
         </div>
     </div>
     <header class="shadow-inherit text-gray-600 body-font z-50 opacity-95"
@@ -39,11 +39,11 @@ function homepage() {
             </a>
             <nav class="md:ml-auto flex flex-wrap items-center text-base md:font-bold justify-center">
                 <a href="index.php" class="text-sm md:text-base mr-5 hover:text-gray-900">Home</a>
-                <a href="about_us.php" class="text-sm md:text-base mr-5 hover:text-gray-900">About</a>
+                <a href="about.php" class="text-sm md:text-base mr-5 hover:text-gray-900">About</a>
                 <a href="staff.php" class="text-sm md:text-base mr-5 hover:text-gray-900">Staff</a>
                 <a href="notices.php" class="text-sm md:text-base mr-5 hover:text-gray-900">Notices</a>
                 <a href="extra_resources.php" class="text-sm md:text-base mr-5 hover:text-gray-900">Extras</a>
-                <a href="contact_us.php" class="text-sm md:text-base mr-5 hover:text-gray-900">Contact Us</a>
+                <a href="contact.php" class="text-sm md:text-base mr-5 hover:text-gray-900">Contact Us</a>
             </nav>
             <button onclick="joinus()"
                 class="inline-flex items-center border-0 py-1 px-3 focus:outline-none rounded text-base mt-4 md:mt-0 text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Join

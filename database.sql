@@ -1,4 +1,4 @@
--- ZTIM fresh install database
+-- Fresh install database
 -- Import this file into the database you want to use for the project.
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -23,6 +23,7 @@ DROP TABLE IF EXISTS `notification`;
 DROP TABLE IF EXISTS `management_committee`;
 DROP TABLE IF EXISTS `gallery_album`;
 DROP TABLE IF EXISTS `flash_notice`;
+DROP TABLE IF EXISTS `holidays`;
 DROP TABLE IF EXISTS `contactfeedback`;
 DROP TABLE IF EXISTS `admission_form`;
 DROP TABLE IF EXISTS `admins`;
@@ -117,6 +118,38 @@ INSERT INTO `carousel_images` (`id`, `image_url`, `alt_text`, `sort_order`, `is_
 (2, 'assets/images/school_images/zangiotaim_001.jpg', 'School building', 2, 1),
 (3, 'assets/images/school_images/fullschool.jpg', 'School building', 3, 1),
 (4, 'assets/images/school_images/mainschool.jpg', 'Main school building', 4, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `holidays`
+--
+
+CREATE TABLE `holidays` (
+  `id` int NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `note` varchar(255) NOT NULL,
+  `month` tinyint DEFAULT NULL,
+  `day` tinyint DEFAULT NULL,
+  `is_floating` tinyint(1) NOT NULL DEFAULT '0',
+  `sort_order` int NOT NULL DEFAULT '0',
+  `is_enabled` tinyint(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `holidays`
+--
+
+INSERT INTO `holidays` (`id`, `title`, `note`, `month`, `day`, `is_floating`, `sort_order`, `is_enabled`) VALUES
+(1, 'Yangi yil', 'Yilning birinchi kuni', 1, 1, 0, 1, 1),
+(2, 'Vatan himoyachilari kuni', 'Mamlakat mudofaasi kuni', 1, 14, 0, 2, 1),
+(3, 'Xalqaro xotin-qizlar kuni', 'Bahor oldi bayrami', 3, 8, 0, 3, 1),
+(4, 'Navroʻz', 'Bahor va yangilanish bayrami', 3, 21, 0, 4, 1),
+(5, 'Ramazon hayiti', 'Sana har yili hijriy taqvimga ko‘ra o‘zgaradi', NULL, NULL, 1, 5, 1),
+(6, 'Qurbon hayiti', 'Sana har yili hijriy taqvimga ko‘ra o‘zgaradi', NULL, NULL, 1, 6, 1),
+(7, 'Mustaqillik kuni', 'Milliy bayram', 9, 1, 0, 7, 1),
+(8, 'Oʻqituvchi va murabbiylar kuni', 'Ustozlar va taʼlim fidoyilari kuni', 10, 1, 0, 8, 1),
+(9, 'Konstitutsiya kuni', 'Davlat bayrami', 12, 8, 0, 9, 1);
 
 -- --------------------------------------------------------
 
@@ -375,6 +408,12 @@ ALTER TABLE `flash_notice`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `holidays`
+--
+ALTER TABLE `holidays`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `gallery_album`
 --
 ALTER TABLE `gallery_album`
@@ -455,6 +494,12 @@ ALTER TABLE `contactfeedback`
 --
 ALTER TABLE `flash_notice`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `holidays`
+--
+ALTER TABLE `holidays`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `gallery_album`

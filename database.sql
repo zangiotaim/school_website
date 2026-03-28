@@ -126,14 +126,15 @@ INSERT INTO `carousel_images` (`id`, `image_url`, `alt_text`, `sort_order`, `is_
 --
 
 CREATE TABLE `holidays` (
-  `id` int NOT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `note` varchar(255) NOT NULL,
   `month` tinyint DEFAULT NULL,
   `day` tinyint DEFAULT NULL,
   `is_floating` tinyint(1) NOT NULL DEFAULT '0',
   `sort_order` int NOT NULL DEFAULT '0',
-  `is_enabled` tinyint(1) NOT NULL DEFAULT '1'
+  `is_enabled` tinyint(1) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -145,8 +146,8 @@ INSERT INTO `holidays` (`id`, `title`, `note`, `month`, `day`, `is_floating`, `s
 (2, 'Vatan himoyachilari kuni', 'Mamlakat mudofaasi kuni', 1, 14, 0, 2, 1),
 (3, 'Xalqaro xotin-qizlar kuni', 'Bahor oldi bayrami', 3, 8, 0, 3, 1),
 (4, 'Navroʻz', 'Bahor va yangilanish bayrami', 3, 21, 0, 4, 1),
-(5, 'Ramazon hayiti', 'Sana har yili hijriy taqvimga ko‘ra o‘zgaradi', NULL, NULL, 1, 5, 1),
-(6, 'Qurbon hayiti', 'Sana har yili hijriy taqvimga ko‘ra o‘zgaradi', NULL, NULL, 1, 6, 1),
+(5, 'Ramazon hayiti', 'Ramazon hayiti', NULL, NULL, 1, 5, 1),
+(6, 'Qurbon hayiti', 'Qurbon hayiti', NULL, NULL, 1, 6, 1),
 (7, 'Mustaqillik kuni', 'Milliy bayram', 9, 1, 0, 7, 1),
 (8, 'Oʻqituvchi va murabbiylar kuni', 'Ustozlar va taʼlim fidoyilari kuni', 10, 1, 0, 8, 1),
 (9, 'Konstitutsiya kuni', 'Davlat bayrami', 12, 8, 0, 9, 1);
@@ -408,11 +409,6 @@ ALTER TABLE `flash_notice`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `holidays`
---
-ALTER TABLE `holidays`
-  ADD PRIMARY KEY (`id`);
-
 --
 -- Indexes for table `gallery_album`
 --
@@ -494,12 +490,6 @@ ALTER TABLE `contactfeedback`
 --
 ALTER TABLE `flash_notice`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `holidays`
---
-ALTER TABLE `holidays`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `gallery_album`

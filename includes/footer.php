@@ -29,17 +29,17 @@
                 <h2 class="title-font font-medium text-[#fff] tracking-widest text-sm mb-3">USEFUL LINKS</h2>
                 <nav class="list-none mb-6 space-y-3">
                     <li>
-                        <a href="https://gov.uz/uzedu" target="_blank" rel="noopener noreferrer" class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] inline-flex items-center gap-2">
+                        <a class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] inline-flex items-center gap-2 cursor-pointer" onclick="maktabgachaVazirligi()">
                             <i class="bi bi-building"></i><span>Maktabgacha va maktab ta'limi vazirligi</span>
                         </a>
                     </li>
                     <li>
-                        <a href="https://gov.uz/ima" target="_blank" rel="noopener noreferrer" class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] inline-flex items-center gap-2">
+                        <a class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] inline-flex items-center gap-2 cursor-pointer" onclick="ixtisoslashganAgentligi()">
                             <i class="bi bi-mortarboard"></i><span>Ixtisoslashtirilgan ta'lim muassasalari agentligi</span>
                         </a>
                     </li>
                     <li>
-                        <a href="https://zangiota.chsb.uz/" target="_blank" rel="noopener noreferrer" class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] inline-flex items-center gap-2">
+                        <a class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] inline-flex items-center gap-2 cursor-pointer" onclick="zangiotaChsb()">
                             <i class="bi bi-graph-up-arrow"></i><span>CHSB tahlili</span>
                         </a>
                     </li>
@@ -53,13 +53,13 @@
                         <a class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] cursor-pointer inline-flex items-start gap-2" onclick="locationmap()"><i class="bi bi-geo-alt mt-1"></i><span>Toshkent viloyati Zangiota tumani Tokzor mahallasi TXAY koʻchasi 10- uy</span></a>
                     </li>
                     <li>
-                        <a class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] cursor-pointer inline-flex items-center gap-2" href="tel:+998555200127"><i class="bi bi-telephone"></i><span>+998 55 520-01-27</span></a>
+                        <a class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] cursor-pointer inline-flex items-center gap-2" onclick="callschool()"><i class="bi bi-telephone"></i><span>+998 55 520-01-27</span></a>
                     </li>
                     <li>
                         <a class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] cursor-pointer inline-flex items-center gap-2" href="tel:+998993001980"><i class="bi bi-telephone"></i><span>+998 99 300-19-80</span></a>
                     </li>
                     <li>
-                        <a class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] cursor-pointer inline-flex items-center gap-2" href="mailto:info@zangiotaim.uz"><i class="bi bi-envelope"></i><span>info@zangiotaim.uz</span></a>
+                        <a class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] cursor-pointer inline-flex items-center gap-2" onclick="mailschool()"><i class="bi bi-envelope"></i><span>info@zangiotaim.uz</span></a>
                     </li>
                 </nav>
             </div>
@@ -68,11 +68,16 @@
     </div>
     <div class="border-t border-white/10 bg-[#03212e]">
         <div class="mx-auto flex w-full flex-col gap-3 px-4 py-3 text-center sm:px-6 lg:px-8 lg:flex-row lg:items-center lg:justify-between lg:text-left">
-            <p class="text-sm md:text-base text-slate-300/85">
-                © 2022 - <?php echo date("Y"); ?> <a href="index.php" class="ml-1 font-semibold text-white transition hover:text-[#ff9f45]">Zangiota tuman ixtisoslashtirilgan maktabi</a>
-            </p>
+            <div class="flex flex-col items-center gap-1.5 lg:items-start">
+                <p class="text-sm md:text-base text-slate-300/85">
+                    © 2022 - <?php echo date("Y"); ?> <a href="index.php" class="ml-1 font-semibold text-white transition hover:text-[#ff9f45]">Zangiota tuman ixtisoslashtirilgan maktabi</a>
+                </p>
+                <p class="text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
+                    Developed by <a href="https://labs.uzhost.net" target="_blank" rel="noopener noreferrer" class="font-semibold text-slate-200 transition hover:text-white">Uzhost Labs</a> · Hosting by <a href="https://uzhost.net" target="_blank" rel="noopener noreferrer" class="font-semibold text-slate-200 transition hover:text-white">Uzhost</a>
+                </p>
+            </div>
 
-            <div class="flex flex-col items-center gap-2 lg:items-end">
+            <div class="flex items-center justify-center lg:justify-end">
                 <span class="inline-flex items-center gap-2.5">
                     <a href="https://t.me/zangiotaim" target="_blank" rel="noopener noreferrer" class="inline-flex h-9 w-9 items-center justify-center rounded-full text-gray-300 transition hover:text-[#ff9f45]" aria-label="Telegram">
                         <i class="bi bi-telegram text-lg"></i>
@@ -93,9 +98,6 @@
                         <i class="bi bi-twitter-x text-lg"></i>
                     </a>
                 </span>
-                <p class="text-xs font-medium uppercase tracking-[0.18em] text-slate-400">
-                    Developed by <a href="https://mrshahzodbek.t.me" target="_blank" rel="noopener noreferrer" class="font-semibold text-slate-200 transition hover:text-white">MrShahzodbek</a> · Hosting by <a href="https://uzhost.net" target="_blank" rel="noopener noreferrer" class="font-semibold text-slate-200 transition hover:text-white">Uzhost</a>
-                </p>
             </div>
         </div>
     </div>

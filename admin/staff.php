@@ -1,6 +1,7 @@
 <?php
 include '../config/db.php';
 include_once '../includes/upload_helpers.php';
+include_once '../includes/functions.php';
 include_once '../includes/admin_auth.php';
 include_once '../includes/admin_data_helpers.php';
 admin_require_auth(true);
@@ -35,7 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (db_execute($connection, $sql, [$committeName, $committePosition, $committePhone, $sqlfileurl])) {
             echo '
             <script>
-            alert("New committe has been added sucessfully")
+            alert("New committee member has been added successfully")
             //window.location.replace("staff.php");
             
             </script>';
@@ -72,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (db_execute($connection, $sql, [$staffName, $staffPost, $staffSubject, $staffPhone, $staffQualification, $sqlfileurl])) {
             echo '
             <script>
-            alert("New Staff has been added sucessfully")
+            alert("New staff member has been added successfully")
             //window.location.replace("staff.php");
             
             </script>';
@@ -129,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (db_execute($connection, $sql, [$committeName, $committePost, $committePhone, $sqlfileurl, $committeId])) {
             echo '
             <script>
-            alert("Committe has been updated sucessfully")
+            alert("Committee member has been updated successfully")
             window.location.replace("staff.php");
             
             </script>';
@@ -170,7 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (db_execute($connection, $sql, [$staffName, $staffPost, $staffSubject, $staffqualification, $staffPhone, $sqlfileurl, $staffId])) {
             echo '
             <script>
-            alert("Staff has been updated sucessfully")
+            alert("Staff member has been updated successfully")
             //window.location.replace("staff.php");
             
             </script>';
@@ -181,6 +182,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 $defaultavatar = "../assets/images/defaults/default_person.jpg";
+$managementCommitte = get_management_committee_rows($connection);
+$staffRows = get_staff_rows($connection);
+$committeeCount = count($managementCommitte);
+$staffCount = count($staffRows);
+$totalPeople = $committeeCount + $staffCount;
 
 ?>
 
@@ -190,12 +196,9 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Change Staff | Pashupati</title>
-    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
+    <title>Staff Management | Zangiota IM</title>
     <link rel="icon" type="image/x-icon" href="../assets/images/admin_logo.png">
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 
 
 </head>
@@ -207,21 +210,40 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
     <section class="text-gray-600 body-font">
         <div class="container px-5 py-10 mx-auto">
             <div class="flex flex-col text-center w-full mb-5">
-                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-blue-600">Update Committe and Staffs
-                </h1>
-                <p class="text-sm md:text-base lg:w-2/3 mx-auto leading-relaxed text-base">
-                    🎉 Welcome to this page dedicated to managing and updating staff and committee details! 📝 It
-                    provides a user-friendly interface for making necessary changes to personnel information and
-                    committee structures. Your input is valuable in ensuring that the records remain accurate and
-                    relevant. Please feel free to utilize the available features to keep everything up-to-date. 🚀
+                <span class="mx-auto inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.25em] text-blue-700">Admin panel</span>
+                <h1 class="mt-4 sm:text-3xl text-2xl font-black title-font mb-4 text-slate-900">Update Committee and Staff</h1>
+                <p class="text-sm md:text-base lg:w-2/3 mx-auto leading-relaxed text-slate-600">
+                    Manage leadership and staff details in one place. Add new profiles, update existing ones, and keep the public directory aligned with the current school structure.
                 </p>
             </div>
 
-            <button data-modal-target="authentication-modal2" data-modal-toggle="authentication-modal2"
-                class="mt-10 block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                type="button">
-                Add Committe Member
-            </button>
+            <div class="mx-auto mb-6 grid max-w-4xl gap-4 sm:grid-cols-3">
+                <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Committee</p>
+                    <p class="mt-2 text-3xl font-black text-slate-900"><?php echo (int) $committeeCount; ?></p>
+                </div>
+                <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">Staff</p>
+                    <p class="mt-2 text-3xl font-black text-slate-900"><?php echo (int) $staffCount; ?></p>
+                </div>
+                <div class="rounded-2xl border border-blue-100 bg-blue-50 p-4 shadow-sm">
+                    <p class="text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">Total people</p>
+                    <p class="mt-2 text-3xl font-black text-slate-900"><?php echo (int) $totalPeople; ?></p>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-3">
+                <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
+                    class="inline-flex items-center rounded-lg bg-blue-700 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300"
+                    type="button">
+                    Add Staff
+                </button>
+                <button data-modal-target="authentication-modal2" data-modal-toggle="authentication-modal2"
+                    class="inline-flex items-center rounded-lg border border-blue-200 bg-white px-5 py-3 text-sm font-semibold text-blue-700 shadow-sm transition hover:border-blue-300 hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-blue-100"
+                    type="button">
+                    Add Committee Member
+                </button>
+            </div>
         </div>
     </section>
 
@@ -238,7 +260,7 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                        Add Staffs
+                        Add Staff
                     </h3>
                     <button type="button"
                         class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -303,7 +325,7 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
         </div>
     </div>
 
-    <!-- Adding Committe Menber -->
+    <!-- Adding Committee Member -->
 
     <div id="authentication-modal2" tabindex="-1" aria-hidden="true"
         class="fadeIn hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -313,7 +335,7 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                     <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                        Add Committe Member
+                        Add Committee Member
                     </h3>
                     <button type="button"
                         class="end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -361,7 +383,7 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
 
                         <button type="submit" name="add_committe"
                             class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add
-                            Committe</button>
+                            Committee</button>
 
                     </form>
                 </div>
@@ -399,7 +421,7 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
                             <thead
                                 class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" class="px-4 py-3">committee</th>
+                                    <th scope="col" class="px-4 py-3">Committee</th>
                                     <th scope="col" class="px-4 py-3">Position</th>
                                     <th scope="col" class="px-4 py-4">Phone</th>
                                     <th scope="col" class="px-4 py-3">
@@ -417,16 +439,20 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
                                 if ($totalmanagementCommitte > 0) {
                                     foreach ($managementCommitte as $row) {
                                         $managementcommitteId = $row['id'];
+                                        $committeeName = escape_html($row['name']);
+                                        $committeePosition = escape_html($row['position']);
+                                        $committeePhone = escape_html($row['contact_no']);
+                                        $committeeImage = escape_html($row['image_src']);
                                         echo '
                                             <tr class="border-b dark:border-gray-700">
                                                 <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <div class="flex items-center mr-3">
-                                                        <img src="../' . $row['image_src'] . '" alt="" class="h-8 w-auto mr-3" onerror="this.src=`' . $defaultavatar . '`">
-                                                        ' . $row['name'] . '
+                                                        <img src="../' . $committeeImage . '" alt="" class="h-8 w-auto mr-3" onerror="this.src=`' . $defaultavatar . '`">
+                                                        ' . $committeeName . '
                                                     </div>
                                                 </th>
-                                                <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white  max-w-[10rem] truncate">' . $row['position'] . '</th>
-                                                <td class="px-4 py-3">' . $row['contact_no'] . '</td>
+                                                <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white  max-w-[10rem] truncate">' . $committeePosition . '</th>
+                                                <td class="px-4 py-3">' . $committeePhone . '</td>
 
                                                 
                                                 <td class="px-4 py-3 flex items-center justify-end">
@@ -494,7 +520,7 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
                                 <div class="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
                                     <!-- Modal header -->
                                     <div class="flex justify-between items-center pb-4 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
-                                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Update Committe</h3>
+                                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Update Committee</h3>
                                         <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="updateProductModal' . $managementcommitteId . '">
                                             <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                 <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd" />
@@ -585,7 +611,7 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
             <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal"
                 class="mt-10 block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 type="button">
-                Add Staffs
+                Add Staff
             </button>
 
 
@@ -605,7 +631,7 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
                                 <label for="simple-search" class="sr-only">Search</label>
                                 <div class="relative w-full">
                                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                        <h2><b>School Staffs</b></h2>
+                                        <h2><b>School Staff</b></h2>
                                     </div>
 
                                 </div>
@@ -618,7 +644,7 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
                             <thead
                                 class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" class="px-4 py-3">Staffs</th>
+                                    <th scope="col" class="px-4 py-3">Staff</th>
                                     <th scope="col" class="px-4 py-3">Post</th>
                                     <th scope="col" class="px-4 py-4">Subject</th>
                                     <th scope="col" class="px-4 py-4">Phone</th>
@@ -638,18 +664,24 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
                                 if ($totalmanagementCommitte > 0) {
                                     foreach ($managementCommitte as $row) {
                                         $staffsId = $row['id'];
+                                        $staffName = escape_html($row['name']);
+                                        $staffPost = escape_html($row['post']);
+                                        $staffSubject = escape_html($row['subject'] ?? '');
+                                        $staffQualification = escape_html($row['qualification']);
+                                        $staffContact = escape_html($row['contact']);
+                                        $staffImage = escape_html($row['image_src']);
                                         echo '
                                             <tr class="border-b dark:border-gray-700">
                                                 <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                                     <div class="flex items-center mr-3">
-                                                        <img src="../' . $row['image_src'] . '" alt="" class="h-8 w-auto mr-3" onerror="this.src=`' . $defaultavatar . '`">
-                                                        ' . $row['name'] . '
+                                                        <img src="../' . $staffImage . '" alt="" class="h-8 w-auto mr-3" onerror="this.src=`' . $defaultavatar . '`">
+                                                        ' . $staffName . '
                                                     </div>
                                                 </th>
-                                                <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white  max-w-[10rem] truncate">' . $row['post'] . '</th>
-                                                <td class="px-4 py-3">' . ($row['subject'] ?? '') . '</td>
-                                                <td class="px-4 py-3">' . $row['contact'] . '</td>
-                                                <td class="px-4 py-3">' . $row['qualification'] . '</td>
+                                                <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white  max-w-[10rem] truncate">' . $staffPost . '</th>
+                                                <td class="px-4 py-3">' . $staffSubject . '</td>
+                                                <td class="px-4 py-3">' . $staffContact . '</td>
+                                                <td class="px-4 py-3">' . $staffQualification . '</td>
 
 
                                                 
@@ -744,7 +776,7 @@ $defaultavatar = "../assets/images/defaults/default_person.jpg";
                                                 <input type="text" name="staffPost" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="' . $row['post'] . '" placeholder="Teacher">
                                                 <label for="staffSubject" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Subject</label>
                                                 <input type="text" name="staffSubject" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="' . ($row['subject'] ?? '') . '" placeholder="Mathematics">
-                                                <label for="post" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Oualification</label>
+                                                <label for="post" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Qualification</label>
                                                 <input type="text" name="staffqualification" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="' . $row['qualification'] . '" placeholder="PHD  ">
                                                 <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Phone No.</label>
                                                 <input type="text" name="staffPhone" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="' . $row['contact'] . '" placeholder="9812000000">

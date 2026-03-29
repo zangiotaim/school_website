@@ -16,18 +16,18 @@
                 <div class="text-sm md:text-base text-slate-300 space-y-2.5 mb-4">
                     <div>
                         <p class="font-semibold text-[#fff]">Dushanba-Juma</p>
-                        <p>08:30 dan - 14:50 gacha</p>
+                        <p>08:30 - 14:50</p>
                     </div>
                     <div>
                         <p class="font-semibold text-[#fff]">Fakultativlar jadvali</p>
                         <p>Dushanba-Juma</p>
-                        <p>15:00 dan - 15:45 gacha</p>
+                        <p>15:00 - 15:45</p>
                     </div>
                 </div>
             </div>
             <div class="lg:w-1/3 md:w-1/2 w-full px-3 md:px-4 lg:px-5">
                 <h2 class="title-font font-medium text-[#fff] tracking-widest text-sm mb-3">USEFUL LINKS</h2>
-                <nav class="list-none mb-6">
+                <nav class="list-none mb-6 space-y-3">
                     <li>
                         <a href="https://gov.uz/uzedu" target="_blank" rel="noopener noreferrer" class="text-sm md:text-base text-slate-300 hover:text-[#ff9f45] inline-flex items-center gap-2">
                             <i class="bi bi-building"></i><span>Maktabgacha va maktab ta'limi vazirligi</span>

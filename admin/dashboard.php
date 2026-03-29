@@ -19,9 +19,8 @@ try {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin | Pashupati</title>
-    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
-    <link rel="icon" type="image/x-icon" href="../assets/images/admin_logo.png">
+    <title>Admin Panel | Zangiota IM</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/defaults/logo_white.png">
 
     <style>
 
@@ -35,47 +34,48 @@ try {
         <section class="text-gray-600 body-font">
 
             <div class="container px-5 py-10 mx-auto">
-            <div class="flex flex-col text-center w-full mb-20">
-                <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-blue-600">Welcome to Admin Pannel</h1>
-                <p class="text-sm md:text-base lg:w-2/3 mx-auto leading-relaxed text-base">
-Welcome to the Admin Panel of Pashupati Technical School! 🏫 Here, you'll find all the tools and resources you need to manage our school's operations efficiently. From student records to scheduling, we've got you covered. 📊
+            <div class="flex flex-col text-center w-full mb-12">
+                <span class="mx-auto inline-flex items-center rounded-full bg-blue-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.28em] text-blue-700">ADMIN PANEL</span>
+                <h1 class="mt-4 sm:text-3xl text-2xl font-black title-font mb-4 text-slate-900">Welcome to the Admin Panel</h1>
+                <p class="text-sm md:text-base lg:w-2/3 mx-auto leading-relaxed text-slate-600">
+                    Manage notices, staff, content, galleries, routines, and feedback from one organized dashboard. The cards below open the main admin tools used to keep the school website up to date.
                 </p>
             </div>
-                <div class="flex flex-wrap -m-2">
-                    <div class="p-2 lg:w-1/3 md:w-1/2 w-full" onclick="flash_notice()">
-                        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg hover:bg-blue-100">
+                <div class="mx-auto grid max-w-7xl gap-4 md:grid-cols-2 xl:grid-cols-3">
+                    <div class="cursor-pointer" onclick="flash_notice()">
+                        <div class="flex h-full items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50 hover:shadow-lg">
                             <img alt="team"
-                                class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                                class="h-14 w-14 flex-shrink-0 rounded-2xl bg-gray-100 object-cover object-center"
                                 src="../assets/images/admin_avatars/flash_notice.png">
-                            <div class="flex-grow">
-                                <h2 class="text-blue-600 title-font font-medium">Flash Home Welcome</h2>
-                                <p class="text-sm md:text-base text-gray-500">Create new welcome flash card</p>
+                            <div class="min-w-0 flex-1">
+                                <h2 class="text-base font-bold leading-snug text-blue-700">Flash Home Welcome</h2>
+                                <p class="mt-1 text-sm leading-6 text-slate-500">Create a new welcome flash card for the homepage.</p>
                             </div>
                         </div>
                     </div>
 
 
 
-                    <div class="p-2 lg:w-1/3 md:w-1/2 w-full" onclick="add_notice()">
-                        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg hover:bg-blue-100">
+                    <div class="cursor-pointer" onclick="add_notice()">
+                        <div class="flex h-full items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50 hover:shadow-lg">
                             <img alt="team"
-                                class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                                class="h-14 w-14 flex-shrink-0 rounded-2xl bg-gray-100 object-cover object-center"
                                 src="../assets/images/admin_avatars/notice.jpg">
-                            <div class="flex-grow">
-                                <h2 class="text-blue-600 title-font font-medium">Add Notices</h2>
-                                <p class="text-sm md:text-base text-gray-500">Add or remove notices</p>
+                            <div class="min-w-0 flex-1">
+                                <h2 class="text-base font-bold leading-snug text-blue-700">Add Notices</h2>
+                                <p class="mt-1 text-sm leading-6 text-slate-500">Add, edit, or remove school notices.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="p-2 lg:w-1/3 md:w-1/2 w-full" onclick="registered_students()">
+                    <div class="cursor-pointer" onclick="registered_students()">
                         <span class="relative">
-                            <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg hover:bg-blue-100">
+                            <div class="flex h-full items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50 hover:shadow-lg">
                                 <img alt="team"
-                                    class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                                    class="h-14 w-14 flex-shrink-0 rounded-2xl bg-gray-100 object-cover object-center"
                                     src="../assets/images/admin_avatars/registered.png">
-                                <div class="flex-grow">
-                                    <h2 class="text-blue-600 title-font font-medium">View Registered Student</h2>
-                                    <p class="text-sm md:text-base text-gray-500">Students who registered online</p>
+                                <div class="min-w-0 flex-1">
+                                    <h2 class="text-base font-bold leading-snug text-blue-700">View Registered Student</h2>
+                                    <p class="mt-1 text-sm leading-6 text-slate-500">Students who registered online.</p>
                                 </div>
                             </div>
                             <?php if($row['total_notification']!=0){
@@ -89,64 +89,64 @@ Welcome to the Admin Panel of Pashupati Technical School! 🏫 Here, you'll find
 
                         </span>
                     </div>
-                    <div class="p-2 lg:w-1/3 md:w-1/2 w-full" onclick="changeRoutine()">
-                        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg hover:bg-blue-100">
+                    <div class="cursor-pointer" onclick="changeRoutine()">
+                        <div class="flex h-full items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50 hover:shadow-lg">
                             <img alt="team"
-                                class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                                class="h-14 w-14 flex-shrink-0 rounded-2xl bg-gray-100 object-cover object-center"
                                 src="../assets/images/admin_avatars/routine.png">
-                            <div class="flex-grow">
-                                <h2 class="text-blue-600 title-font font-medium">Change Routine</h2>
-                                <p class="text-sm md:text-base text-gray-500">Change Engineering class routine</p>
+                            <div class="min-w-0 flex-1">
+                                <h2 class="text-base font-bold leading-snug text-blue-700">Change Routine</h2>
+                                <p class="mt-1 text-sm leading-6 text-slate-500">Update class routines and timetable files.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="p-2 lg:w-1/3 md:w-1/2 w-full" onclick="changeStaff()">
-                        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg hover:bg-blue-100">
+                    <div class="cursor-pointer" onclick="changeStaff()">
+                        <div class="flex h-full items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50 hover:shadow-lg">
                             <img alt="team"
-                                class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                                class="h-14 w-14 flex-shrink-0 rounded-2xl bg-gray-100 object-cover object-center"
                                 src="../assets/images/admin_avatars/staffs.png">
-                            <div class="flex-grow">
-                                <h2 class="text-blue-600 title-font font-medium">Change Staffs Details</h2>
-                                <p class="text-sm md:text-base text-gray-500">Add remove and modify staff's details</p>
+                            <div class="min-w-0 flex-1">
+                                <h2 class="text-base font-bold leading-snug text-blue-700">Change Staff Details</h2>
+                                <p class="mt-1 text-sm leading-6 text-slate-500">Add, remove, and modify staff details.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-2 lg:w-1/3 md:w-1/2 w-full" onclick="site_content()">
-                        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg hover:bg-blue-100">
+                    <div class="cursor-pointer" onclick="site_content()">
+                        <div class="flex h-full items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50 hover:shadow-lg">
                             <img alt="team"
-                                class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                                class="h-14 w-14 flex-shrink-0 rounded-2xl bg-gray-100 object-cover object-center"
                                 src="../assets/images/admin_avatars/site_content.jpg">
-                            <div class="flex-grow">
-                                <h2 class="text-blue-600 title-font font-medium">Change Site Content</h2>
-                                <p class="text-sm md:text-base text-gray-500">Change full website content</p>
+                            <div class="min-w-0 flex-1">
+                                <h2 class="text-base font-bold leading-snug text-blue-700">Change Site Content</h2>
+                                <p class="mt-1 text-sm leading-6 text-slate-500">Edit the full website content in one place.</p>
                             </div>
                         </div>
                     </div>
 
 
 
-                    <div class="p-2 lg:w-1/3 md:w-1/2 w-full" onclick="add_gallery()">
-                        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg hover:bg-blue-100">
+                    <div class="cursor-pointer" onclick="add_gallery()">
+                        <div class="flex h-full items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50 hover:shadow-lg">
                             <img alt="team"
-                                class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                                class="h-14 w-14 flex-shrink-0 rounded-2xl bg-gray-100 object-cover object-center"
                                 src="../assets/images/admin_avatars/add_gallery.png">
-                            <div class="flex-grow">
-                                <h2 class="text-blue-600 title-font font-medium">Add Gallery</h2>
-                                <p class="text-sm md:text-base text-gray-500">Add moments like picnic, events</p>
+                            <div class="min-w-0 flex-1">
+                                <h2 class="text-base font-bold leading-snug text-blue-700">Add Gallery</h2>
+                                <p class="mt-1 text-sm leading-6 text-slate-500">Add school moments, events, and photos.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="p-2 lg:w-1/3 md:w-1/2 w-full" onclick="feedback_page()">
+                    <div class="cursor-pointer" onclick="feedback_page()">
                         <span class="relative">
-                            <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg hover:bg-blue-100">
+                            <div class="flex h-full items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50 hover:shadow-lg">
                                 <img alt="team"
-                                    class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                                    class="h-14 w-14 flex-shrink-0 rounded-2xl bg-gray-100 object-cover object-center"
                                     src="../assets/images/admin_avatars/feedback.png">
-                                <div class="flex-grow">
-                                    <h2 class="text-blue-600 title-font font-medium">View Feedback</h2>
-                                    <p class="text-sm md:text-base text-gray-500">Feedback provided on website</p>
+                                <div class="min-w-0 flex-1">
+                                    <h2 class="text-base font-bold leading-snug text-blue-700">View Feedback</h2>
+                                    <p class="mt-1 text-sm leading-6 text-slate-500">Read feedback submitted through the website.</p>
                                 </div>
                             </div>
                             <?php if($feedback['total_notification']!=0){
@@ -159,14 +159,14 @@ Welcome to the Admin Panel of Pashupati Technical School! 🏫 Here, you'll find
                         </span>
                     </div>
 
-                    <div class="p-2 lg:w-1/3 md:w-1/2 w-full" onclick="adminAndScribe()">
-                        <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg hover:bg-blue-100">
+                    <div class="cursor-pointer" onclick="adminAndScribe()">
+                        <div class="flex h-full items-start gap-4 rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-1 hover:border-blue-200 hover:bg-blue-50 hover:shadow-lg">
                             <img alt="team"
-                                class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"
+                                class="h-14 w-14 flex-shrink-0 rounded-2xl bg-gray-100 object-cover object-center"
                                 src="../assets/images/admin_avatars/adminadd.png">
-                            <div class="flex-grow">
-                                <h2 class="text-blue-600 title-font font-medium">Add or Remove scribe for Notice</h2>
-                                <p class="text-sm md:text-base text-gray-500">Scribe can add or remove notices</p>
+                            <div class="min-w-0 flex-1">
+                                <h2 class="text-base font-bold leading-snug text-blue-700">Manage Admin Access</h2>
+                                <p class="mt-1 text-sm leading-6 text-slate-500">Add or remove scribes for notices.</p>
                             </div>
                         </div>
                     </div>

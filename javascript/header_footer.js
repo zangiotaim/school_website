@@ -26,6 +26,6 @@ function ixtisoslashganAgentligi(){
 
 }
 function zangiotaChsb(){
-    window.location.href = "https://zangiota.chsb.uz/";
+    window.location.href = "https://monitoring.zangiotaim.uz/";
 
 }

@@ -24,6 +24,7 @@ function render_staff_cards(array $rows, array $options = []): string
     $emptyMessage = $options['empty_message'] ?? 'No entries available yet.';
     $accentClass = $options['accent_class'] ?? 'from-amber-100 via-orange-50 to-sky-100';
     $label = $options['label'] ?? 'Team';
+    $labelClass = $options['label_class'] ?? 'text-slate-500';
 
     if (count($rows) === 0) {
         return '<div class="rounded-[2rem] border border-dashed border-slate-300 bg-white px-8 py-14 text-center text-slate-500 shadow-sm">' . escape_html($emptyMessage) . '</div>';
@@ -37,25 +38,29 @@ function render_staff_cards(array $rows, array $options = []): string
             $image = $fallbackImage;
         }
 
-        $name = trim((string) ($row['name'] ?? ''));
+        $name = trim(preg_replace('/\s+/', ' ', (string) ($row['name'] ?? '')));
         $subtitle = is_callable($subtitleFormatter) ? trim((string) $subtitleFormatter($row)) : '';
         $meta = is_callable($metaFormatter) ? trim((string) $metaFormatter($row)) : '';
 
         $html[] = '<article class="group relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-2xl">';
         $html[] = '    <div class="absolute inset-x-7 top-0 h-28 rounded-b-[2rem] bg-gradient-to-br ' . escape_html($accentClass) . ' opacity-95"></div>';
         $html[] = '    <div class="relative text-center">';
-        $html[] = '        <span class="inline-flex rounded-full border border-white/70 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-slate-500 shadow-sm">' . escape_html($label) . '</span>';
-        $html[] = '        <div class="mx-auto mt-5 flex h-44 w-44 items-center justify-center overflow-hidden rounded-full border-[6px] border-white bg-slate-50 shadow-xl ring-1 ring-slate-200">';
+        $html[] = '        <span class="inline-flex rounded-full border border-white/70 bg-white/90 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] ' . escape_html($labelClass) . ' shadow-sm">' . escape_html($label) . '</span>';
+        $html[] = '        <div class="mx-auto mt-5 flex h-40 w-40 items-center justify-center overflow-hidden rounded-full border-[6px] border-white bg-slate-50 shadow-xl ring-1 ring-slate-200 sm:h-44 sm:w-44">';
         $html[] = '            <img class="h-full w-full object-cover" src="' . escape_html($image) . '" alt="' . escape_html($name) . '" onerror="this.src=\'' . escape_html($fallbackImage) . '\'">';
         $html[] = '        </div>';
-        $html[] = '        <h3 class="mt-7 text-[1.5rem] font-semibold tracking-tight text-slate-900">' . escape_html($name) . '</h3>';
+        $html[] = '        <h3 class="mt-6 text-[1.45rem] font-semibold tracking-tight text-slate-900">' . escape_html($name) . '</h3>';
 
         if ($subtitle !== '') {
-            $html[] = '        <p class="mt-2 text-base font-medium text-orange-700">' . escape_html($subtitle) . '</p>';
+            $html[] = '        <p class="mt-3 text-[0.95rem] font-semibold uppercase tracking-[0.18em] text-orange-700">' . escape_html($subtitle) . '</p>';
         }
 
         if ($meta !== '') {
-            $html[] = '        <p class="mt-3 text-sm leading-6 text-slate-500">' . escape_html($meta) . '</p>';
+            $metaLines = array_filter(array_map('trim', preg_split('/\|/', $meta) ?: []), static function ($value): bool {
+                return $value !== '';
+            });
+            $metaMarkup = implode('<br>', array_map('escape_html', $metaLines));
+            $html[] = '        <p class="mt-4 text-[0.96rem] leading-7 text-slate-500">' . $metaMarkup . '</p>';
         }
 
         $html[] = '    </div>';
@@ -72,7 +77,6 @@ function render_staff_cards(array $rows, array $options = []): string
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff</title>
-    <script defer src="https://unpkg.com/alpinejs@3.2.3/dist/cdn.min.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/images/logo2.png">
 </head>
 
@@ -80,37 +84,28 @@ function render_staff_cards(array $rows, array $options = []): string
     <?php include 'includes/header.php'; ?>
 
     <main>
-        <section class="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.08),_transparent_24%),radial-gradient(circle_at_top_right,_rgba(251,191,36,0.16),_transparent_28%),linear-gradient(180deg,#f8fbff_0%,#f5f7fb_100%)]">
+        <section class="relative overflow-x-hidden bg-[radial-gradient(circle_at_top_left,_rgba(59,130,246,0.08),_transparent_24%),radial-gradient(circle_at_top_right,_rgba(251,191,36,0.16),_transparent_28%),linear-gradient(180deg,#f8fbff_0%,#f5f7fb_100%)]">
             <div class="pointer-events-none absolute inset-x-0 top-0 h-40 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.75),_transparent_65%)]"></div>
             <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16">
-                <div class="grid gap-10 lg:grid-cols-[minmax(0,1.15fr)_300px] lg:items-center">
-                    <div class="max-w-3xl">
+                <div class="max-w-[88rem]">
+                        <div class="w-full max-w-7xl rounded-[2.2rem] border border-white/70 bg-white/78 px-6 py-6 shadow-[0_18px_45px_rgba(15,23,42,0.07)] backdrop-blur sm:px-8 sm:py-7 lg:px-10 lg:py-8">
                         <p class="text-[0.82rem] font-semibold uppercase tracking-[0.32em] text-sky-700">Meet Our People</p>
-                        <h1 class="mt-4 text-4xl font-semibold tracking-tight text-slate-900 sm:text-5xl lg:text-[4.25rem] lg:leading-[0.96]">Leadership & Staff</h1>
-                        <p class="mt-5 max-w-3xl text-lg leading-8 text-slate-600 sm:text-[1.32rem] sm:leading-10">
+                        <div class="mt-4 inline-block bg-transparent pr-4 pb-2">
+                            <h1 class="max-w-[72rem] text-[2.95rem] font-semibold tracking-[-0.04em] leading-[1.06] text-slate-900 sm:text-[3.95rem] sm:leading-[1.04] lg:text-[5rem] lg:leading-[1.02]">Leadership &amp; Staff</h1>
+                        </div>
+                        <p class="mt-5 max-w-4xl text-lg leading-8 text-slate-600 sm:text-[1.22rem] sm:leading-9">
                             A strong school is built by people who lead with vision, teach with purpose, and support students with care. Explore the team guiding strategy, shaping learning, and creating an environment where every learner can thrive.
                         </p>
-                    </div>
-
-                    <div class="grid gap-4 sm:grid-cols-3 lg:grid-cols-1">
-                        <div class="rounded-[1.6rem] border border-slate-200/90 bg-white/92 px-6 py-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)] backdrop-blur">
-                            <p class="text-sm font-medium text-slate-500">Leadership Team</p>
-                            <p class="mt-2 text-[2.15rem] font-semibold leading-none text-slate-900"><?php echo count($managementCommitteeMembers); ?></p>
+                        <div class="mt-7 flex flex-wrap gap-3">
+                            <a href="#management-committee" class="inline-flex items-center rounded-full bg-slate-900 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800">Leadership Team</a>
+                            <a href="#faculty-staff" class="inline-flex items-center rounded-full border border-slate-300 bg-white px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:text-slate-900">Faculty & Staff</a>
                         </div>
-                        <div class="rounded-[1.6rem] border border-slate-200/90 bg-white/92 px-6 py-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)] backdrop-blur">
-                            <p class="text-sm font-medium text-slate-500">Faculty & Staff</p>
-                            <p class="mt-2 text-[2.15rem] font-semibold leading-none text-slate-900"><?php echo count($staffMembers); ?></p>
                         </div>
-                        <div class="rounded-[1.6rem] border border-slate-200/90 bg-white/92 px-6 py-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)] backdrop-blur">
-                            <p class="text-sm font-medium text-slate-500">Directory Scope</p>
-                            <p class="mt-2 text-[1.08rem] font-semibold leading-8 text-slate-900">Leadership, teaching, and support teams</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <section class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <section id="management-committee" class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
             <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                 <div class="max-w-3xl">
                     <p class="text-sm font-semibold uppercase tracking-[0.24em] text-sky-700">Leadership</p>
@@ -128,13 +123,14 @@ function render_staff_cards(array $rows, array $options = []): string
                     [
                         'fallback_image' => $defaultAvatar,
                         'label' => 'Leadership',
+                        'label_class' => 'text-sky-700',
                         'accent_class' => 'from-amber-100 via-orange-50 to-sky-100',
                         'subtitle_formatter' => static function (array $row): string {
                             return trim((string) ($row['position'] ?? ''));
                         },
                         'meta_formatter' => static function (array $row): string {
                             $contact = trim((string) ($row['contact_no'] ?? ''));
-                            return $contact;
+                            return $contact !== '' ? 'Contact ' . $contact : '';
                         },
                         'empty_message' => 'Leadership profiles will appear here after they are added.',
                     ]
@@ -143,7 +139,7 @@ function render_staff_cards(array $rows, array $options = []): string
             </div>
         </section>
 
-        <section class="border-t border-slate-200 bg-white">
+        <section id="faculty-staff" class="border-t border-slate-200 bg-white">
             <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
                 <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                     <div class="max-w-3xl">
@@ -159,35 +155,35 @@ function render_staff_cards(array $rows, array $options = []): string
                     <?php
                     echo render_staff_cards(
                         $staffMembers,
-                        [
-                            'fallback_image' => $defaultAvatar,
-                            'label' => 'Faculty',
-                            'accent_class' => 'from-emerald-100 via-teal-50 to-sky-100',
-                            'subtitle_formatter' => static function (array $row): string {
-                                $subject = trim((string) ($row['subject'] ?? ''));
-                                $post = trim((string) ($row['post'] ?? ''));
-                                return $post;
-                            },
-                            'meta_formatter' => static function (array $row): string {
-                                $parts = [];
-                                $subject = trim((string) ($row['subject'] ?? ''));
-                                $qualification = trim((string) ($row['qualification'] ?? ''));
-                                $contact = trim((string) ($row['contact'] ?? ''));
+                    [
+                        'fallback_image' => $defaultAvatar,
+                        'label' => 'Faculty',
+                        'label_class' => 'text-emerald-700',
+                        'accent_class' => 'from-emerald-100 via-teal-50 to-sky-100',
+                        'subtitle_formatter' => static function (array $row): string {
+                            $post = trim((string) ($row['post'] ?? ''));
+                            return $post;
+                        },
+                        'meta_formatter' => static function (array $row): string {
+                            $parts = [];
+                            $subject = trim((string) ($row['subject'] ?? ''));
+                            $qualification = trim((string) ($row['qualification'] ?? ''));
+                            $contact = trim((string) ($row['contact'] ?? ''));
 
-                                if ($subject !== '') {
-                                    $parts[] = $subject;
-                                }
+                            if ($subject !== '') {
+                                $parts[] = $subject;
+                            }
 
-                                if ($qualification !== '') {
-                                    $parts[] = $qualification;
-                                }
+                            if ($qualification !== '') {
+                                $parts[] = $qualification;
+                            }
 
-                                if ($contact !== '') {
-                                    $parts[] = $contact;
-                                }
+                            if ($contact !== '') {
+                                $parts[] = $contact;
+                            }
 
-                                return implode(' | ', $parts);
-                            },
+                            return implode(' | ', $parts);
+                        },
                         'empty_message' => 'Faculty and staff profiles will appear here after they are added.',
                         ]
                     );
